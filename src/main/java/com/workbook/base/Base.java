@@ -5,9 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Base {
 
     protected static WebDriver driver ;
+    protected static String downloadDir;
 
     //Setup method
     public static void setup(){
@@ -17,11 +21,18 @@ public class Base {
         }
 
         String browser = ConfigReader.getProperty("browser").toLowerCase();
-
+        downloadDir = ConfigReader.getProperty("dir").toLowerCase();
 
         switch (browser){
             case "chrome":
+                // Set Chrome preferences for downloads
+                Map<String, Object> prefs = new HashMap<>();
+                prefs.put("download.default_directory", downloadDir);
+                prefs.put("download.prompt_for_download", false);
+                prefs.put("plugins.always_open_pdf_externally", true);
+
                 ChromeOptions options = new ChromeOptions();
+                options.setExperimentalOption("prefs",prefs);
                 options.addArguments("--start-maximized");
                 options.addArguments("--disable-notification");
                 driver = new ChromeDriver(options);
@@ -53,5 +64,9 @@ public class Base {
 
     public static WebDriver getDriver(){
         return driver;
+    }
+
+    public static String getDownloadDir(){
+        return downloadDir;
     }
 }

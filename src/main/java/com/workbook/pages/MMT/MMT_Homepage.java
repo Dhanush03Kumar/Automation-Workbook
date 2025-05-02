@@ -1,13 +1,11 @@
-package com.workbook.pages;
+package com.workbook.pages.MMT;
 
-import jdk.jshell.SourceCodeAnalysis;
+import com.workbook.pages.Base.baseMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-
-public class MMT_Homepage extends baseMethods{
+public class MMT_Homepage extends baseMethods {
 
     @FindBy(xpath = "//span[@class='commonModal__close']")
     private WebElement ClosePopUp;
@@ -53,7 +51,7 @@ public class MMT_Homepage extends baseMethods{
     }
 
     public void selectCityDynamic(String text) throws InterruptedException {
-        scrollAndSearch(Suggestions,text);
+        scrollAndSearchDropDown(Suggestions,text);
     }
 
 

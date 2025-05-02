@@ -1,12 +1,10 @@
-package com.workbook.pages;
+package com.workbook.pages.Base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,10 +14,12 @@ import java.util.List;
 public class baseMethods {
     protected WebDriver driver;
     protected WebDriverWait wait;
+    JavascriptExecutor js;
 
     public baseMethods(WebDriver driver){
         this.driver=driver;
         this.wait=new WebDriverWait(driver, Duration.ofSeconds(5));
+        this.js = (JavascriptExecutor) driver;
         PageFactory.initElements(driver,this);
     }
 
@@ -38,10 +38,10 @@ public class baseMethods {
 
     }
 
-    public void scrollAndSearch(WebElement element,String text) throws InterruptedException {
+    public void scrollAndSearchDropDown(WebElement element, String text) throws InterruptedException {
 
 
-            JavascriptExecutor js = (JavascriptExecutor) driver;
+
 
             List<WebElement> cities = element.findElements(By.xpath("//ul[@role='listbox']//li"));
 
@@ -57,6 +57,28 @@ public class baseMethods {
             throw new RuntimeException("Not found");
 
 
+    }
+
+    public void scrollToView(WebElement element){
+
+        js.executeScript("arguments[0].scrollIntoView(true)",element);
+
+
+    }
+
+    public String getAttribute(WebElement element){
+        return element.getDomAttribute("href");
+    }
+
+    public String getFileName(String url){
+        if (url == null || !url.contains("/")) {
+            throw new IllegalArgumentException("Invalid URL or format: " + url);
+        }
+        return url.substring(url.lastIndexOf('/') + 1);
+    }
+
+    public void placeholder(){
+        System.out.println("Place holder");
     }
 
 

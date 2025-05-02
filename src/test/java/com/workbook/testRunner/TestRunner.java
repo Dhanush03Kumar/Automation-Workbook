@@ -6,10 +6,10 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         features = "src/test/resources/feature files",
-        glue ={"com.workbook.ui_Automation.SeleniumWorkbook1"},
+        glue ={"com.workbook.ui_Automation.SeleniumWorkbook2"},
         plugin = {"pretty","json:target/cucumber-report.json", "html:target/cucumber-reports.html"},
         monochrome = true,
-        tags = "@WorkBook1"
+        tags = "@WorkBook2"
 )
 
 public class TestRunner extends AbstractTestNGCucumberTests {

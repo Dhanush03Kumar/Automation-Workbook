@@ -1,7 +1,7 @@
 package com.workbook.ui_Automation.SeleniumWorkbook1;
 
 import com.workbook.base.Base;
-import com.workbook.pages.MMT_Homepage;
+import com.workbook.pages.MMT.MMT_Homepage;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
