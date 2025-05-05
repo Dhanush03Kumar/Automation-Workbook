@@ -27,7 +27,7 @@ public class baseMethods {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
-    public void enterText(WebElement element,String text) throws InterruptedException {
+    public void sendText(WebElement element, String text) throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOf(element)).sendKeys(text);
         Thread.sleep(5000);
     }

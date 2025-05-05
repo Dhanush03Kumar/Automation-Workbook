@@ -12,6 +12,7 @@ public class Base {
 
     protected static WebDriver driver ;
     protected static String downloadDir;
+    protected static String fileToBeUploaded;
 
     //Setup method
     public static void setup(){
@@ -22,6 +23,7 @@ public class Base {
 
         String browser = ConfigReader.getProperty("browser").toLowerCase();
         downloadDir = ConfigReader.getProperty("dir").toLowerCase();
+        fileToBeUploaded = ConfigReader.getProperty("fileTobeUploaded").toLowerCase();
 
         switch (browser){
             case "chrome":
@@ -68,5 +70,9 @@ public class Base {
 
     public static String getDownloadDir(){
         return downloadDir;
+    }
+
+    public static String getFileToBeUploaded(){
+        return fileToBeUploaded;
     }
 }

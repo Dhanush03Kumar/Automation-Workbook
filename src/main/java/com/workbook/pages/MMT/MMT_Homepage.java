@@ -38,14 +38,14 @@ public class MMT_Homepage extends baseMethods {
 
     public void selectFromCity(String fromCity) throws InterruptedException {
         clickElement(Arrival);
-        enterText(ArrivalDynamic,fromCity);
+        sendText(ArrivalDynamic,fromCity);
 
 
     }
 
     public void selectToCity(String fromCity) throws InterruptedException {
         clickElement(Destination);
-        enterText(DestinationDynamic,fromCity);
+        sendText(DestinationDynamic,fromCity);
 
 
     }
